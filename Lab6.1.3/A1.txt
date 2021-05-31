@@ -1,0 +1,43 @@
+hostname A1
+no ip domain lookup
+banner motd # A1, Implement VRF-Lite #
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+line vty 0 4
+transport input telnet
+privilege level 15
+password cisco123
+exec-timeout 0 0
+logging synchronous
+login
+exit
+interface e0/0
+shutdown
+exit
+vlan 5
+name D1
+exit
+vlan 8
+name D2
+exit
+interface e0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport nonegotiate
+no shutdown
+exit
+interface e0/2
+switchport mode access
+switchport access vlan 5
+no shutdown
+exit
+interface e0/3
+switchport mode access
+switchport access vlan 8
+no shutdown
+exit
+no ip cef
+clock timezone UTC +0
+end

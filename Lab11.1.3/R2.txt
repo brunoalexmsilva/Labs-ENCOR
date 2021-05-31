@@ -1,0 +1,29 @@
+hostname R2
+no ip domain lookup
+line con 0
+logging sync
+exec-time 0 0
+exit
+interface Loopback0
+ip address 192.168.2.1 255.255.255.224
+ipv6 address FE80::2:3 link-local
+ipv6 address 2001:DB8:ACAD:2000::1/64
+no shut
+interface Loopback1
+ip address 192.168.2.65 255.255.255.192
+ipv6 address FE80::2:4 link-local
+ipv6 address 2001:DB8:ACAD:2001::1/64
+no shut
+interface e0/0
+ip address 10.1.2.2 255.255.255.0
+ipv6 address FE80::2:1 link-local
+ipv6 address 2001:DB8:ACAD:1012::2/64
+no shut
+interface e0/1
+ip address 10.2.3.2 255.255.255.0
+ipv6 address FE80::2:2 link-local
+ipv6 address 2001:DB8:ACAD:1023::2/64
+no shut
+exit
+clock timezone UTC +0
+end

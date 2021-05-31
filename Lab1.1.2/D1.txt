@@ -1,0 +1,12 @@
+no ip domain lookup
+hostname D1
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+banner motd # This is D1, Inter-VLAN Routing Lab #
+interface range e0/0-3
+shutdown
+exit
+clock timezone UTC +0
+end

@@ -1,0 +1,17 @@
+hostname R1
+no ip domain lookup
+line con 0
+logging sync
+exec-time 0 0
+exit
+banner motd # This is R1, Implement Multi-Area OSPFv2 Lab #
+interface e0/0
+ip add 172.16.0.2 255.255.255.252
+no shut
+exit
+interface e0/1
+ip address 10.10.0.1 255.255.255.252
+no shut
+exit
+clock timezone UTC +0
+end

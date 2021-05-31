@@ -1,0 +1,24 @@
+hostname D2
+banner motd # D2, STP Tuning and Protection #
+spanning-tree mode rapid-pvst
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+interface range e0/3
+shutdown
+exit
+interface range e0/0-2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+no shutdown
+exit
+vlan 2
+name SecondVLAN
+exit
+interface vlan 1
+ip address 10.0.0.2 255.0.0.0
+no shut
+exit
+clock timezone UTC +0
+end

@@ -1,0 +1,23 @@
+hostname D2
+no ip domain lookup
+line con 0
+logging sync
+exec-time 0 0
+exit
+interface e0/2
+no switchport
+ip address 10.10.0.3 255.255.255.248
+no shut
+exit
+interface e0/0
+no switchport
+ip address 10.10.24.1 255.255.255.0
+no shut
+exit
+interface e0/1
+no switchport
+ip address 10.10.25.1 255.255.255.0
+no shut
+exit
+clock timezone UTC +0
+end

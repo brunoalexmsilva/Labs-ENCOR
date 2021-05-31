@@ -1,0 +1,12 @@
+hostname A1
+no ip domain lookup
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+interface range e0/0-3
+no shutdown
+exit
+no ip cef
+clock timezone UTC +0
+end

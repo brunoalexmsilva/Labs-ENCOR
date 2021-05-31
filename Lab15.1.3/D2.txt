@@ -1,0 +1,57 @@
+hostname D2
+ip routing
+ipv6 unicast-routing
+no ip domain lookup
+banner motd # D2, Implement HSRP #
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+line vty 0 4
+transport input telnet
+privilege level 15
+password cisco123
+exec-timeout 0 0
+logging synchronous
+login
+exit
+interface range e1/0-1
+shutdown
+exit
+interface range e0/0-3, e1/2-3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+no shutdown
+exit
+interface range e0/0-3
+channel-group 12 mode active
+exit
+interface range e1/2-3
+channel-group 2 mode active
+exit
+vlan 11
+name FIRST_VLAN
+exit
+vlan 21
+name SECOND_VLAN
+exit
+interface vlan 11
+ip address 10.11.0.2 255.255.255.0
+ipv6 address fe80::d2:1 link-local
+ipv6 address 2001:db8:acad:11::2/64
+no shutdown
+exit
+interface vlan 21
+ip address 10.21.0.2 255.255.255.0
+ipv6 address fe80::d2:2 link-local
+ipv6 address 2001:db8:acad:21::2/64
+no shutdown
+exit
+interface loopback 0
+ip address 192.168.1.1 255.255.255.0
+ipv6 address fe80::d2:3 link-local
+ipv6 address 2001:db8:acad:1000::1/64
+no shutdown
+exit
+clock timezone UTC +0
+end

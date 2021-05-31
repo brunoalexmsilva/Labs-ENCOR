@@ -1,0 +1,25 @@
+hostname R2
+no ip domain lookup
+line con 0
+logging sync
+exec-time 0 0
+exit
+interface e0/0
+ip add 172.16.0.1 255.255.255.252
+ipv6 add 2001:db8:acad:a001::1/64
+ipv6 add fe80::2:1 link-local
+no shut
+exit
+interface e0/1
+ip address 172.16.1.1 255.255.255.252
+ipv6 add 2001:db8:acad:a002::1/64
+ipv6 add fe80::2:2 link-local
+no shut
+exit
+int lo0
+ip add 209.165.200.225 255.255.255.224
+ipv6 add 2001:db8:feed:209::1/64
+ipv6 add fe80::2:3 link-local
+exit
+clock timezone UTC +0
+end

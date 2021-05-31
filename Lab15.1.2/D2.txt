@@ -1,0 +1,15 @@
+hostname D2
+no ip domain lookup
+line con 0
+logging sync
+exec-time 0 0
+exit
+banner motd # This is D2, Implement NTP Lab #
+ip routing
+interface e0/0
+no switchport
+ip address 10.10.0.3 255.255.255.248
+ip ospf 123 area 0
+no shut
+clock timezone UTC +0
+end

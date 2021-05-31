@@ -1,0 +1,20 @@
+hostname R1
+no ip domain lookup
+line con 0
+logging sync
+exec-time 0 0
+exit
+interface Loopback0
+ip address 209.165.200.225 255.255.255.224
+no shut
+exit
+interface Loopback1
+ip address 192.168.1.1 255.255.255.192
+no shut
+exit
+interface e0/0
+ip address 10.10.0.1 255.255.255.248
+no shut
+exit
+clock timezone UTC +0
+end

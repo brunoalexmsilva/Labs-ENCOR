@@ -1,0 +1,14 @@
+hostname D2
+banner motd # D2, Tuning EtherChannel #
+spanning-tree mode rapid-pvst
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+interface range e0/0-3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+no shutdown
+exit
+clock timezone UTC +0
+end

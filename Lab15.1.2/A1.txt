@@ -1,0 +1,15 @@
+hostname A1
+no ip domain lookup
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+banner motd # This is A1, Implement NTP Lab #
+interface vlan 1
+ip address 10.10.0.4 255.255.255.248
+no shut
+exit
+ip default-gateway 10.10.0.1
+no ip cef
+clock timezone UTC +0
+end
